@@ -1,0 +1,24 @@
+{
+  "name": "filmAppMongoose",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JordanLeeDiamond/filmAppMongoose.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JordanLeeDiamond/filmAppMongoose/issues"
+  },
+  "homepage": "https://github.com/JordanLeeDiamond/filmAppMongoose#readme",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "mongoose": "^6.0.5"
+  }
+}
