@@ -1,41 +1,38 @@
-const { collection } = require("./film.model");
 const Film = require("./film.model");
 
-exports.addMovie = async (newFilm) => {
+exports.addMovie = async (newMovie) => {
     try {
-            const movie = new Film(newFilm)
+            const movie = new Film(newMovie)
             await movie.save()
+            console.log(`${newMovie.name} successfully stored.`)
     } catch (error) {
         console.log(error)
     }
-}
+};
 
-exports.listMovie = async (collection) => {
+exports.listMovie = async (listQuery) => {
     try {
-            const list = await collection.find({}).toArray();
-            console.log(list);
+            const list = await Film.find(listQuery).exec();
+            console.log(list)
     } catch (error) {
         console.log(error)
     }
-}
+};
 
-exports.updateMovie = async (collection, updateObj) => {
+exports.updateMovie = async (query, updateMovie) => {
     try {
-            await collection.updateOne(
-                { name: updateObj.filter },
-                { $set: { like: updateObj.like } }
-            );
+        await Film.findOneAndUpdate(query, updateMovie);
+        console.log(`${query.name} successfully updated.`)
     } catch (error) {
         console.log(error)
     }
-}
+};
 
-exports.deleteMovie = async (collection, deletObj) => {
+exports.deleteMovie = async (movie) => {
     try {
-        await deleteMovie({
-            name: process.argv[3],
-        });
+        await Film.findOneAndDelete(movie);
+        console.log(`${movie.name} successfully deleted.`)
     } catch (error) {
         console.log(error)
     }
-}
+};

@@ -11,19 +11,22 @@ const app = async () => {
             like: process.argv[5]
         });
     } else if (command === "list") {
-        await connection(listMovies);
+        await listMovies({
+            [process.argv[3]]: process.argv[4],
+        });
     } else if (command === "update") {
-        const updateObj = {
-            filter: process.argv[3],
-            like: process.argv[5]
-        }; 
-        await connection(updateMovie, updateObj);
+        await updateMovie(
+            { name: process.argv[3], },
+            { like: process.argv[4], }
+        );
     } else if (command === "delete") {
-        await connection(deleteMovie, { filter: process.argv[3] });
+        await deleteMovie({
+            name: process.argv[3],
+        });
     } else {
         console.log("Enter Valid Command")
     }
-    mongoose.disconnect()
+    mongoose.disconnect();
 };
 
 app();
